@@ -1,4 +1,22 @@
 {
+  {
+  "release": {
+    "tagFormat": "v${version}",
+    "branches": ["main"],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      "@semantic-release/git",
+      [
+        "@semantic-release/exec",
+        {
+          "successCmd": "echo \"SEMVER_VERSION=${nextRelease.version}\" >> $GITHUB_ENV"
+        }
+      ]
+    ]
+  },
   "dependencies": {
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
